@@ -114,23 +114,36 @@ export function swiperInit() {
                   '[data-slider-id="history-years"]'
                 ).swiper;
 
-                myHistoryBtns.forEach((btn, i) => {
-                  btn.addEventListener('click', () => {
-                    console.log(this.el);
+                myHistoryBtns.forEach((myBtn, i) => {
+                  myBtn.addEventListener('click', () => {
                     this.slideToLoop(i);
                     myImagesSlider.slideToLoop(i);
                     myYearsSlider.slideToLoop(i);
+
+                    myHistoryBtns.forEach((btn) => {
+                      btn.classList.remove('active');
+                    });
+                    myBtn.classList.add('active');
                   });
                 });
               },
 
               slideChange: function () {
                 if (window.innerWidth > 1200) return;
+                const myHistoryBtnsWrapper = document.querySelector('.about-history__btns');
+                const myHistoryBtns = myHistoryBtnsWrapper.querySelectorAll('[data-history-btn]');
+
                 setTimeout(() => {
                   const activeSlide = $(this.el).find('.swiper-slide-active');
                   const myHeight = $(activeSlide).height();
                   $(this.el.parentNode).animate({ height: `${myHeight}px` }, 500);
                 }, 0);
+
+                myHistoryBtns.forEach((btn) => {
+                  btn.classList.remove('active');
+                });
+
+                myHistoryBtns[this.realIndex].classList.add('active');
               },
             },
           };
