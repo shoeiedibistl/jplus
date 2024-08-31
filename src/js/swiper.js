@@ -104,13 +104,31 @@ export function swiperInit() {
                 const activeSlide = $(this.el).find('.swiper-slide-active');
                 const myHeight = activeSlide.height();
                 $(this.el.parentNode).height(`${myHeight}px`);
+
+                const myHistoryBtnsWrapper = document.querySelector('.about-history__btns');
+                const myHistoryBtns = myHistoryBtnsWrapper.querySelectorAll('[data-history-btn]');
+                const myImagesSlider = document.querySelector(
+                  '[data-slider-id="history-images"]'
+                ).swiper;
+                const myYearsSlider = document.querySelector(
+                  '[data-slider-id="history-years"]'
+                ).swiper;
+
+                myHistoryBtns.forEach((btn, i) => {
+                  btn.addEventListener('click', () => {
+                    console.log(this.el);
+                    this.slideToLoop(i);
+                    myImagesSlider.slideToLoop(i);
+                    myYearsSlider.slideToLoop(i);
+                  });
+                });
               },
 
               slideChange: function () {
+                if (window.innerWidth > 1200) return;
                 setTimeout(() => {
                   const activeSlide = $(this.el).find('.swiper-slide-active');
-                  const myHeight = activeSlide.height();
-                  console.log(myHeight);
+                  const myHeight = $(activeSlide).height();
                   $(this.el.parentNode).animate({ height: `${myHeight}px` }, 500);
                 }, 0);
               },
