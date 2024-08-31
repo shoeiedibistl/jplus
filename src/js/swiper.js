@@ -129,21 +129,22 @@ export function swiperInit() {
               },
 
               slideChange: function () {
-                if (window.innerWidth > 1200) return;
                 const myHistoryBtnsWrapper = document.querySelector('.about-history__btns');
                 const myHistoryBtns = myHistoryBtnsWrapper.querySelectorAll('[data-history-btn]');
-
-                setTimeout(() => {
-                  const activeSlide = $(this.el).find('.swiper-slide-active');
-                  const myHeight = $(activeSlide).height();
-                  $(this.el.parentNode).animate({ height: `${myHeight}px` }, 500);
-                }, 0);
 
                 myHistoryBtns.forEach((btn) => {
                   btn.classList.remove('active');
                 });
 
                 myHistoryBtns[this.realIndex].classList.add('active');
+
+                if (window.innerWidth > 1200) return;
+
+                setTimeout(() => {
+                  const activeSlide = $(this.el).find('.swiper-slide-active');
+                  const myHeight = $(activeSlide).height();
+                  $(this.el.parentNode).animate({ height: `${myHeight}px` }, 500);
+                }, 0);
               },
             },
           };
