@@ -89,9 +89,6 @@ export const mapInit = () => {
           placemark.balloon.open();
         }
       });
-      myMap.events.add('balloonclose', function (e) {
-        clearStores();
-      });
     });
 
     myMap.events.add('click', function () {
