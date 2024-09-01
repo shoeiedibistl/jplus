@@ -101,9 +101,11 @@ export function swiperInit() {
 
             on: {
               init: function () {
-                const activeSlide = $(this.el).find('.swiper-slide-active');
-                const myHeight = activeSlide.height();
-                $(this.el.parentNode).height(`${myHeight}px`);
+                if (window.innerWidth <= 1200) {
+                  const activeSlide = $(this.el).find('.swiper-slide-active');
+                  const myHeight = activeSlide.height();
+                  $(this.el.parentNode).height(`${myHeight}px`);
+                }
 
                 const myHistoryBtnsWrapper = document.querySelector('.about-history__btns');
                 const myHistoryBtns = myHistoryBtnsWrapper.querySelectorAll('[data-history-btn]');
