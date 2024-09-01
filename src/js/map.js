@@ -80,11 +80,6 @@ export const mapInit = () => {
         activateStore(myCard);
       });
 
-      myMap.events.add('click', function (e) {
-        clearStores();
-        placemark.balloon.close();
-      });
-
       myStore.addEventListener('click', function () {
         if (this.classList.contains('active')) {
           placemark.balloon.close();
@@ -97,6 +92,11 @@ export const mapInit = () => {
       myMap.events.add('balloonclose', function (e) {
         clearStores();
       });
+    });
+
+    myMap.events.add('click', function (e) {
+      clearStores();
+      myMap.balloon.close();
     });
   });
 };
