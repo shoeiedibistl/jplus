@@ -82,7 +82,7 @@ export const mapInit = () => {
 
       myStore.addEventListener('click', function () {
         if (this.classList.contains('active')) {
-          placemark.balloon.close();
+          myMap.balloon.close();
           this.classList.remove('active');
         } else {
           activateStore(this);
