@@ -94,7 +94,7 @@ export const mapInit = () => {
       });
     });
 
-    myMap.events.add('click', function (e) {
+    myMap.events.add('click', function () {
       clearStores();
       myMap.balloon.close();
     });
