@@ -40,8 +40,8 @@ export const mapInit = () => {
       const myBalloon = `<div class='current-balloon-content'>${myStore.innerHTML}</div>`;
       const myHint = myStore.querySelector('.mark-title').innerText;
       const myCoordsAttr = myStore.getAttribute('data-cord').split(' ');
-      const myId = myStore.getAttribute('data-mark');
       const myCoords = [+myCoordsAttr[0], +myCoordsAttr[1]];
+      const myId = myStore.getAttribute('data-mark');
 
       var placemark = new ymaps.Placemark(
         myCoords,
